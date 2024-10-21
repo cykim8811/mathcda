@@ -16,7 +16,7 @@ class DINO:
         alpha = alpha.T[np.newaxis, :, :]
         qm = qm[:, :, np.newaxis]
 
-        n = (1 - np.pow(alpha, qm)).prod(axis=1)  # ndarray[문항 id, 학생 id] -> 0 or 1 (해당 학생이 해당 문항을 위한 인지요소를 모두 가지고 있는지 여부)
+        n = np.pow(1 - alpha, qm).prod(axis=1)  # ndarray[문항 id, 학생 id] -> 0 or 1 (해당 학생이 해당 문항을 위한 인지요소를 모두 가지고 있는지 여부)
 
         w = 1 - n
 
