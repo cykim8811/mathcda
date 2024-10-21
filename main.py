@@ -3,11 +3,13 @@ import numpy as np
 import csv
 
 from models import DINA, DINO, ACDM
+from estimate import MLE
+
 
 if __name__ == "__main__":
     model = ACDM(
-        slip=np.array([0.3] * 12),
-        guess=np.array([0.3] * 12)
+        slip=np.array([0.2] * 12),
+        guess=np.array([0.4] * 12)
     )
 
     with open("data/q_matrix.csv", "r") as f:
@@ -22,7 +24,7 @@ if __name__ == "__main__":
         x = np.array([[int(i) for i in row[1:]] for row in reader])
         print("Student Answer Loaded: ", x.shape)
     
-    alpha = model.predict(qm, x)
+    alpha = MLE(model, qm, x)
 
     for i in range(len(student_id)):
         print(student_id[i], ":", [skill_name[j] for j in range(len(skill_name)) if alpha[i][j] == 1])
