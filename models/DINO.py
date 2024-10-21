@@ -23,7 +23,7 @@ class DINO:
         s = self.slip[:, np.newaxis]
         g = self.guess[:, np.newaxis]
 
-        return np.pow((1 - s), w) * np.pow(g, 1 - w)    # ndarray[문항 id, 학생 id] -> 0~1 (해당 학생이 해당 문항을 맞출 확률)
+        return np.pow((1 - s), 1 - w) * np.pow(g, w)    # ndarray[문항 id, 학생 id] -> 0~1 (해당 학생이 해당 문항을 맞출 확률)
 
     def L(self, alpha, qm, x):
         # x: ndarray[학생 id, 문항 id] -> 0 or 1 (해당 학생이 해당 문항을 맞췄는지 여부)
