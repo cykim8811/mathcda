@@ -22,8 +22,6 @@ class ACDM:
 
         return d0 + (alpha * d).sum(axis=1)  # ndarray[문항 id, 학생 id] -> 0~1 (해당 학생이 해당 문항을 맞출 확률)
 
-
-
     def L(self, alpha, qm, x):
         # x: ndarray[학생 id, 문항 id] -> 0 or 1 (해당 학생이 해당 문항을 맞췄는지 여부)
         
